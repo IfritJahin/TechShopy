@@ -49,13 +49,13 @@ function Header({ onSearch }) {
                 <Container fluid >
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
-                        <Link to='/Temp/'>
+                        <Link to='/TechShopy/'>
                             <Navbar.Brand>
                                 <img className="mr-3" style={{ width: '80px', marginLeft: '40px' }} src={BL} alt="Logo" />
                             </Navbar.Brand>
                         </Link>
                         <Nav className="d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1" >
-                            <Link to='/Temp/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
+                            <Link to='/TechShopy/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
                             <Link to='/products' className='nav-link text-white text-decoration-none m-3'>Products</Link>
                             <Link to='/contact' className='nav-link text-white  text-decoration-none m-3'>Contact</Link>
                             <Link to='/help' className='nav-link text-white text-decoration-none m-3'>Help & Support</Link>

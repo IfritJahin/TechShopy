@@ -19,7 +19,7 @@ function App() {
         <div style={{ minHeight: height }}>
           <Header />
           <Routes>
-            <Route path='/Temp/' element={<Home />} />
+            <Route path='/TechShopy/' element={<Home />} />
             <Route path='/myaccount' element={<Reg />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/help' element={<Help />}></Route>
