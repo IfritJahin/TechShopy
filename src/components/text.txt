@@ -1,0 +1,37 @@
+  background: linear-gradient(251deg, rgba(82,142,184,1) 0%,  rgba(10,27,52,1)100%);
+    const [homeproIndex, sethomeproIndex] = useState(0);
+  const prevPro = () => {
+    console.log("Prev button clicked");
+    if (homeproIndex > 0) sethomeproIndex(homeproIndex - 1);
+  }
+
+  const nextPro = () => {
+    console.log("Next button clicked");
+    if (homeproIndex < Home_p.length - 1) sethomeproIndex(homeproIndex + 1);
+  }
+
+
+
+      <h2 className='hp'>Popular Products</h2>
+      <section className='popular'>
+        <button className="left-arrow" onClick={prevPro}><FontAwesomeIcon icon={faCircleArrowLeft} size="2x" style={{ color: "#a5b5cf", }} /></button>
+        <div className='p_product' style={{ transform: `translateX(-${homeproIndex * 100}%)` }}>
+          {
+            Home_p.map((curElement) => {
+              return (
+                <div className='boxes' key={curElement.id}>
+                  <div className='box'>
+                    <img src={curElement.img} alt=''></img>
+                    <div className="box-content">
+                      <span className="box-title">{curElement.Name || 'Product Name'}</span>
+                      <h4 className="box-description">{curElement.type || 'Product Description'}</h4>
+                      <p className="box-price">Price: {curElement.price}</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+        <button className="right-arrow" onClick={nextPro}><FontAwesomeIcon icon={faCircleArrowRight} size="2x" style={{ color: "#a5b5cf", }} /></button>
+      </section>
