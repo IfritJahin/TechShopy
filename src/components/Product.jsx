@@ -130,7 +130,7 @@ function Product() {
                         </Card>
                     </Col>
                     <Col xs={12} sm={8} className='mt-4 mb-3 pl-md-2'>
-                        <Row ><Col sm={12} className='pl-md-2 w-100'><Card><Card.Header>All</Card.Header></Card></Col></Row>
+                        <Row ><Col sm={12} className='pl-md-2 w-100'><Card><Card.Header> {selectedCategories.length > 0 ? `${selectedCategories.join(', ')}` : 'All'}</Card.Header></Card></Col></Row>
                         <Row>
                             <Col sm={12} className='mt-4 mb-3 pl-md-2'>
                                 <Row>
