@@ -42,12 +42,24 @@ function Header({ onSearch }) {
 
     const handleCloser = () => SetShow(false);
     const handleShower = () => SetShow(true);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleViewCartClick = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
     return (
         <div>
             <Navbar collapseOnSelect expand="sm" fixed="top" style={{ backgroundImage: 'linear-gradient(95deg, rgba(10,32,45,1) 0%, rgba(18,46,60,1) 29%, rgba(19,45,59,1) 48%, rgba(17,51,69,1) 73%, rgba(12,35,48,1) 100%)', }} className="">
 
                 <Container fluid >
-                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Toggle aria-controls="navbarScroll" variant='none'>
+                        <FontAwesomeIcon icon={faBars} style={{ color: "#FFffff", border: '0px', fontSize: '25px' }} />
+                    </Navbar.Toggle>
+
                     <Navbar.Collapse id="navbarScroll">
                         <Link to='/TechShopy/'>
                             <Navbar.Brand>
@@ -65,9 +77,9 @@ function Header({ onSearch }) {
                                     All Categories
                                 </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a className="dropdown-item" href="#">All Categories</a>
-                                    <a className="dropdown-item" href="#">Laptops</a>
-                                    <a className="dropdown-item" href="#">Phones</a>
+                                    <Link to='./products' className="dropdown-item" href="">All Categories</Link>
+                                    <Link to='./products' className="dropdown-item" href="#">Laptops</Link>
+                                    <Link to='./products' className="dropdown-item" href="#">Phones</Link>
                                     {/* ... other items ... */}
                                 </div>
                             </div>
@@ -132,15 +144,27 @@ function Header({ onSearch }) {
                                                 </Offcanvas.Header>
                                                 <Offcanvas.Body>
                                                     <div className="d-grid gap-2">
-                                                        <Button size='lg' variant='none' className="custom-button">
+                                                        <Button size='lg' variant='none' className="custom-button" onClick={handleViewCartClick}>
                                                             VIEW CART
                                                         </Button>
 
-                                                        <Button size='lg' variant='none' className='custom-button'>
-                                                            CONTINUE SHOPPING
-                                                        </Button>
-                                                        <Link to='/checkout' >
-                                                            <Button size='lg' variant='none' style={{ background: '#FFDE59', color: 'white', borderRadius: 0 }}>
+                                                        <Modal show={showModal} onHide={handleCloseModal}>
+
+                                                            <Modal.Header closeButton>
+                                                                <Modal.Title>Cart</Modal.Title>
+                                                            </Modal.Header>
+                                                            <Modal.Body>
+                                                                Add Items
+                                                            </Modal.Body>
+                                                        </Modal>
+                                                        <Link to='./TechShopy/' style={{ width: '100%', display: 'block' }}>
+
+                                                            <Button size='lg' variant='none' className='custom-button' style={{ width: '100%' }}>
+                                                                CONTINUE SHOPPING
+                                                            </Button>
+                                                        </Link>
+                                                        <Link to='/checkout' style={{ width: '100%', display: 'block' }} >
+                                                            <Button size='lg' variant='none' style={{ width: '100%', background: '#FFDE59', color: 'white', borderRadius: 0 }}>
                                                                 PROCEED TO CHECKOUT
                                                             </Button>
                                                         </Link>

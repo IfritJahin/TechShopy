@@ -11,7 +11,7 @@ const Home_p = [
         type: 'New',
         price: '100000 bdt',
         Name: 'Iphone 14 ',
-        cat: ''
+        cat: 'SmartPhone & Tabltes'
     },
     {
         id: '2',
@@ -19,15 +19,15 @@ const Home_p = [
         type: 'New',
         price: '1000 bdt',
         Name: 'Apple iPad Air 4th Gen',
-        cat: ''
+        cat: 'SmartPhone & Tabltes'
     },
     {
         id: '3',
         img: airpod,
         type: 'New',
         price: '1000 bdt',
-        Name: '',
-        cat: ''
+        Name: 'Airpod',
+        cat: 'TV & Audios'
     }, {
         id: '4',
         img: iwatch,
@@ -50,7 +50,7 @@ const Home_p = [
         type: 'New',
         price: '1000 bdt',
         Name: 'HP Pavilion 15-eg0077TU',
-        cat: ''
+        cat: 'Laptop & Ipad'
     },
 ]
 

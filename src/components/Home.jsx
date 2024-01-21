@@ -104,9 +104,14 @@ function Home() {
 
                                     <div className="hover-icons">
                                       <div className='d-flex justify-content-center'>
-                                        <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: '3rem', width: '3em', }}>
-                                          <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '15px' }} />
-                                        </Button>
+
+                                        <Link to='/checkout'>
+                                          <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: '3rem', width: '3em', }}>
+                                            <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '15px' }} />
+                                          </Button>
+                                        </Link>
+
+
                                         <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: '3rem', width: '3em', }}>
                                           <FontAwesomeIcon icon={faHeart} style={{ color: "white", fontSize: '15px' }} />
                                         </Button>
