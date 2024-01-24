@@ -65,12 +65,13 @@ function Home() {
     <main>
       <div className='' style={{ marginBottom: '0' }}>
         <Container fluid>
-          <div className="embed-responsive embed-responsive-16by9 w-100 vh-100 " >
-            <video className="embed-responsive-item top-0 left-0  " autoPlay loop muted  >
+          <div className="embed-responsive embed-responsive-16by9 w-100 vh-100">
+            <video className="embed-responsive-item top-0 left-0 img-fluid" autoPlay loop muted>
               <source src={video} type="video/mp4" />
             </video>
           </div>
         </Container>
+
       </div>
       <div className='text-center mb-0 mt-0'>
         <Card className='' style={{ border: 'none' }}>
@@ -154,32 +155,35 @@ function Home() {
           <div className="centerBox mt-3">
             <div className="categoryWrapper">
               <Row className="justify-content-md-center mt-3">
-                <Col sm={12} md={4} lg={4} style={{ textAlign: 'right' }}>
+                <Col md="auto" style={{ textAlign: 'right' }}>
                   <div className='mt-3'>
-                    <span>New Deals </span><br></br>
+                    <span>New Deals </span><br />
                     <span>Start Daily at 12pm</span>
                   </div>
-
                 </Col>
-
-                <Col sm={12} md={8} lg={8} className='ml-3'>
-                  <h4 style={{ color: '#2a2a28', marginLeft: '10px' }}>20% Discount In All Products</h4>
-                  <Button className='btnr rounded-pill' variant='none' style={{ backgroundColor: '#122e3c', width: '250px' }}>
-                    <span style={{ marginRight: '25px', color: 'white' }}>
-                      <span>
-                        <span data-attr-span="See the Range">
-                          See the Range
-                        </span>
+                <Col xs lg="1">
+                  <div className="vl"></div>
+                </Col>
+                <Col className=''>
+                  <h4 style={{ color: '#2a2a28' }}>20% Discount In All Products</h4>
+                  <Button className='btnr rounded-pill' variant='none' style={{ backgroundColor: '#122e3c', width: '100%' }}>
+                    <span style={{ color: 'white' }}>
+                      <span data-attr-span="See the Range">
+                        See the Range
                       </span>
                     </span>
-                    <FontAwesomeIcon icon={faArrowRight} beat size='lg' style={{ color: "white" }} />
+                    <FontAwesomeIcon icon={faArrowRight} beat size='lg' style={{ color: "white", marginLeft: '10px' }} />
                   </Button>
+
+
                 </Col>
               </Row>
             </div>
           </div>
         </div>
       </Container>
+
+
 
       <div className='mb-5'>
         <Container>
@@ -203,7 +207,7 @@ function Home() {
                   <Image
                     className="d-block w-100"
                     src={addbg}
-                    alt="First slide"
+                    alt="Second slide"
                     rounded
                     style={{ width: '100%', height: 'auto' }}
                   />

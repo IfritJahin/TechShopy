@@ -144,33 +144,45 @@ video {
   background-color: #000;
   font-family: "Saira Stencil One", cursive !important;
 }
-/* Add this to your stylesheet or in your component's style tag */
-.slide-up-image {
-  animation: slideUp 1s ease-in-out; 
-  position: absolute;
-  margin-bottom: 10px;
-}
 
 @keyframes slideUp {
   0% {
-    transform: translateY(100%); /* Slide up from 100% down to 0% */
+    transform: translateY(50%); /* Slide up from 100% down to 0% */
   }
-  100% {
+  50% {
     transform: translateY(0%);
   }
 }
+
 .text-caption {
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(50%);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   position: absolute;
   margin-bottom: 60px;
+  max-width: 100%; /* Ensure it doesn't go beyond the viewport width */
+}
+
+.text-caption h2, .text-caption h5 {
+  font-size: 18px; /* Adjust font size as needed for smaller screens */
 }
 
 .carousel-item.active .text-caption {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .text-caption {
+    margin-bottom: 30px; /* Adjust the margin for smaller screens */
+  }
+
+  .text-caption h2, .text-caption h5 {
+    font-size: 14px; /* Further reduce font size for smaller screens */
+  }
+}
+
 
 /* Add this to your stylesheet or in your component's style tag */
 
@@ -214,7 +226,10 @@ video {
   border-color: white;
 }
 
-
+.vl {
+  border-left: 6px solid rgb(167, 175, 167);
+  height: 100px;
+}
 @media (max-width: 768px) {
   .img {
       width: 90%;
@@ -229,3 +244,10 @@ video {
     
   }
 }
+/* Adjust the height for smaller screens */
+@media (max-width: 767px) {
+  .embed-responsive-16by9 {
+    height: 50vh; /* Adjust the height as needed for small screens */
+  }
+}
+
