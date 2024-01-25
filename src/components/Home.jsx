@@ -74,7 +74,7 @@ function Home() {
 
       </div>
       <div className='text-center mb-0 mt-0'>
-        <Card className='' style={{ border: 'none' }}>
+        <Card className='mobile-display' style={{ border: 'none' }}>
           <Tabs
             defaultActiveKey="Popular"
             id="uncontrolled-tab-example"
@@ -82,7 +82,7 @@ function Home() {
             variant="underline"
             style={{ color: 'blue', fontSize: '20px' }}
           >
-            <Nav.Item eventKey="Popular" title="Popular">
+            <Nav.Item className='top-nav' eventKey="Popular" title="Popular">
               <Card.Body >
                 <div className='bg-white' style={{ height: '520px', marginBottom: '20px' }}>
                   <div className="popular">

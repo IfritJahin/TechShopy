@@ -251,3 +251,12 @@ video {
   }
 }
 
+
+@media (max-width: 767px) {
+  .mobile-display {
+   margin-top: -457px;
+  }
+}
+
+
+
