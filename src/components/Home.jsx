@@ -95,21 +95,21 @@ function Home() {
           }
         }
       `}</style>
-<div className="home-video-section">
-  <Container fluid className="px-0">
-    <div className="home-hero-video-wrap">
-      <video
-        className="home-hero-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src={video} type="video/mp4" />
-      </video>
-    </div>
-  </Container>
-</div>
+      <div className="home-video-section">
+        <Container fluid className="px-0">
+          <div className="home-hero-video-wrap">
+            <video
+              className="home-hero-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          </div>
+        </Container>
+      </div>
       <div className='text-center' style={{ marginBottom: '100px', marginTop: '100PX' }}>
         <Card className='mobile-display' style={{ border: 'none' }}>
           <Tabs
