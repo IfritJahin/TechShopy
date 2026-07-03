@@ -95,24 +95,21 @@ function Home() {
           }
         }
       `}</style>
-
-      <div className='' style={{ marginBottom: '0' }}>
-        <Container fluid className="px-0">
-          <div
-            className="embed-responsive embed-responsive-16by9 w-100 home-hero-video-wrap"
-            style={{ position: 'relative', paddingBottom: '56.25%', minHeight: '180px' }}
-          >
-            <video
-              className="embed-responsive-item img-fluid"
-              autoPlay loop muted playsInline
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-            >
-              <source src={video} type="video/mp4" />
-            </video>
-          </div>
-        </Container>
-
-      </div>
+<div className="home-video-section">
+  <Container fluid className="px-0">
+    <div className="home-hero-video-wrap">
+      <video
+        className="home-hero-video"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src={video} type="video/mp4" />
+      </video>
+    </div>
+  </Container>
+</div>
       <div className='text-center' style={{ marginBottom: '100px', marginTop: '100PX' }}>
         <Card className='mobile-display' style={{ border: 'none' }}>
           <Tabs
