@@ -44,47 +44,87 @@ function Home() {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
+          initialSlide: 2,
+          arrows: false
         }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          arrows: false,
+          centerMode: true,
+          centerPadding: '30px'
         }
       }
     ]
   };
 
   return (
-    <main>
+    // overflow-x hidden stops any fixed-width/absolutely-positioned
+    // element (the hardcoded left/width buy-now buttons, fixed card
+    // widths, etc.) from ever forcing horizontal scroll on a phone
+    <main style={{ overflowX: 'hidden', width: '100%' }}>
+      {/* Same design, just letting it flex at the sizes that actually
+          break on real devices: phones (<=480px) and tablets/iPad
+          portrait (<=768px, which is also Bootstrap's md breakpoint). */}
+      <style>{`
+        @media (max-width: 768px) {
+          .home-carousel-col,
+          .home-side-col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+          }
+          .home-side-col {
+            margin-top: 12px;
+          }
+          .box {
+            width: clamp(160px, 45vw, 240px) !important;
+          }
+
+        }
+        @media (max-width: 480px) {
+          .buy-now-button-2 {
+            left: auto !important;
+            right: 8px !important;
+          }
+        }
+      `}</style>
+
       <div className='' style={{ marginBottom: '0' }}>
-        <Container fluid>
-          <div className="embed-responsive embed-responsive-16by9 w-100 vh-100">
-            <video className="embed-responsive-item top-0 left-0 img-fluid" autoPlay loop muted>
+        <Container fluid className="px-0">
+          <div
+            className="embed-responsive embed-responsive-16by9 w-100 home-hero-video-wrap"
+            style={{ position: 'relative', paddingBottom: '56.25%', minHeight: '180px' }}
+          >
+            <video
+              className="embed-responsive-item img-fluid"
+              autoPlay loop muted playsInline
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            >
               <source src={video} type="video/mp4" />
             </video>
           </div>
         </Container>
 
       </div>
-      <div className='text-center mb-0 mt-0'>
+      <div className='text-center' style={{ marginBottom: '100px', marginTop: '100PX' }}>
         <Card className='mobile-display' style={{ border: 'none' }}>
           <Tabs
             defaultActiveKey="Popular"
             id="uncontrolled-tab-example"
-            className="mt-5 mb-3 d-flex justify-content-center"
+            className=" d-flex justify-content-center flex-wrap"
             variant="underline"
-            style={{ color: 'blue', fontSize: '20px' }}
+            style={{ color: 'blue', fontSize: 'clamp(12px, 4vw, 20px)' }}
           >
             <Nav.Item className='top-nav' eventKey="Popular" title="Popular">
-              <Card.Body >
-                <div className='bg-white' style={{ height: '520px', marginBottom: '20px' }}>
+              <Card.Body className="px-1 px-sm-2 px-md-3">
+                <div className='bg-white' style={{ height:'100%' }}>
                   <div className="popular">
                     <div className='container'>
                       <Slider {...settings}>
@@ -92,12 +132,25 @@ function Home() {
                           Home_p.map((curElement) => {
                             return (
                               <div className='' key={curElement.id} >
-                                <Card className='box' style={{ width: '18rem', maxHeight: '500px' }}>
-                                  <Card.Img variant="top" className='img' style={{ maxHeight: '288px' }} src={curElement.img} alt='' />
-                                  <Card.Body className='card_body'>
-                                    <Card.Title className="box-title" ><h6>{curElement.Name || 'Product Name'}</h6></Card.Title>
-                                    <Card.Text className="box-description " style={{ maxHeight: '24px', }}><h7>{curElement.type || 'Product Description'}</h7></Card.Text>
-                                    <Card.Text className="box-price"><h6>Price: {curElement.price}</h6></Card.Text>
+                                <Card
+                                  className='box mx-auto'
+                                  style={{
+                                    width: 'clamp(150px, 42vw, 18rem)',
+                                    maxWidth: '18rem',
+                                    minWidth: '150px'
+                                  }}
+                                >
+                                  <Card.Img
+                                    variant="top"
+                                    className='img'
+                                    style={{ width: '100%', height: 'clamp(150px, 32vw, 288px)', objectFit: 'cover' }}
+                                    src={curElement.img}
+                                    alt=''
+                                  />
+                                  <Card.Body className='card_body px-2 px-sm-3'>
+                                    <Card.Title className="box-title" ><h6 style={{ fontSize: 'clamp(12px, 3vw, 16px)' }}>{curElement.Name || 'Product Name'}</h6></Card.Title>
+                                    <Card.Text className="box-description " style={{ maxHeight: '24px', }}><h7 style={{ fontSize: 'clamp(10px, 2.5vw, 13px)' }}>{curElement.type || 'Product Description'}</h7></Card.Text>
+                                    <Card.Text className="box-price"><h6 style={{ fontSize: 'clamp(11px, 2.8vw, 15px)' }}>Price: {curElement.price}</h6></Card.Text>
                                     <Rating className='align-items-center'
                                       emptySymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#fae500", }} />}
                                       fullSymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#dde000", }} />}
@@ -107,17 +160,17 @@ function Home() {
                                       <div className='d-flex justify-content-center'>
 
                                         <Link to='/checkout'>
-                                          <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: '3rem', width: '3em', }}>
-                                            <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '15px' }} />
+                                          <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: 'clamp(2.4rem, 8vw, 3rem)', width: 'clamp(2.4rem, 8vw, 3em)', }}>
+                                            <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: 'clamp(12px, 3vw, 15px)' }} />
                                           </Button>
                                         </Link>
 
 
-                                        <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: '3rem', width: '3em', }}>
-                                          <FontAwesomeIcon icon={faHeart} style={{ color: "white", fontSize: '15px' }} />
+                                        <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: 'clamp(2.4rem, 8vw, 3rem)', width: 'clamp(2.4rem, 8vw, 3em)', }}>
+                                          <FontAwesomeIcon icon={faHeart} style={{ color: "white", fontSize: 'clamp(12px, 3vw, 15px)' }} />
                                         </Button>
                                       </div>
-                                      <Button variant="none" className='rounded-pill mt-3' style={{ color: 'white', background: '#122e3c', }}>Select Options</Button>
+                                      <Button variant="none" className='rounded-pill mt-3' style={{ color: 'white', background: '#122e3c', fontSize: 'clamp(11px, 2.5vw, 14px)' }}>Select Options</Button>
                                     </div>
                                   </Card.Body>
 
@@ -136,59 +189,84 @@ function Home() {
             <Nav.Item eventKey="On Sale" title="On Sale">
 
               <Card.Body >
-                <Card.Title className='mb-4 text-center' style={{ fontFamily: 'inherit', fontSize: '30px' }}>On Sale</Card.Title>
+                <Card.Title className='mb-4 text-center' style={{ fontFamily: 'inherit', fontSize: 'clamp(18px, 5vw, 30px)' }}>On Sale</Card.Title>
 
 
               </Card.Body>
             </Nav.Item>
             <Nav.Item eventKey="Top Rated" title="Top Rated">
               <Card.Body >
-                <Card.Title className='mb-4 text-center' style={{ fontFamily: 'inherit', fontSize: '30px' }}>Top Rated</Card.Title>
+                <Card.Title className='mb-4 text-center' style={{ fontFamily: 'inherit', fontSize: 'clamp(18px, 5vw, 30px)' }}>Top Rated</Card.Title>
 
 
               </Card.Body>
             </Nav.Item>
           </Tabs></Card>
       </div>
-      <Container className='bg-container mb-5' style={{ height: '210px' }}>
-        <div className='bg-con' style={{ height: '160px' }}>
-          <div className="centerBox mt-3">
-            <div className="categoryWrapper">
-              <Row className="justify-content-md-center mt-3">
-                <Col md="auto" style={{ textAlign: 'right' }}>
-                  <div className='mt-3'>
-                    <span>New Deals </span><br />
-                    <span>Start Daily at 12pm</span>
+      <Container
+        fluid
+        className="bg-container d-flex justify-content-center align-items-center"
+        style={{ minHeight: "clamp(120px, 25vh, 210px)" , marginBottom: '100px' }}
+      >
+        <div
+          className="bg-con d-flex justify-content-center align-items-center mx-auto"
+          style={{ minHeight: "clamp(100px, 20vh, 160px)" }}
+        >
+                <div className="centerBox">
+                  <div className="categoryWrapper">
+                    <Row className="justify-content-center justify-content-md-center mt-2 mt-md-3 px-2 home-deal-row">
+                      <Col xs={12} md="auto" style={{ textAlign: 'right' }} className='text-center text-md-end mb-2 mb-md-0'>
+                        <div className='mt-2 mt-md-3'>
+                          <span style={{ fontSize: 'clamp(11px, 3vw, 15px)', display: 'block' }}>New Deals </span><br />
+                          <span style={{ fontSize: 'clamp(10px, 2.5vw, 13px)', display: 'block' }}>Start Daily at 12pm</span>
+                        </div>
+                      </Col>
+                      <Col xs="auto" lg="1" className='d-none d-md-block'>
+                        <div className="vl"></div>
+                      </Col>
+                      <Col xs={12} md={true} className='discount px-1 px-md-3 '>
+                        <h4 style={{ color: '#2a2a28', fontSize: 'clamp(13px, 4vw, 22px)', marginBottom: 'clamp(0.3rem, 2vw, 0.5rem)' }}>20% Discount In All Products</h4>
+                      <Button
+                        className="btnr rounded-pill d-flex align-items-center justify-content-center"
+                        variant="none"
+                        style={{
+                          backgroundColor: "#122e3c",
+                          fontSize: "clamp(10px, 2vw, 14px)",
+                          padding: "clamp(0.45rem, 1vw + 0.3rem, 0.75rem)",
+                          gap: "6px",
+                          minHeight: "40px",
+                        }}
+                      >
+                        <span style={{ color: "white" }}>
+                          <span data-attr-span="See the Range">
+                            See the Range
+                          </span>
+                        </span>
+
+                        <FontAwesomeIcon
+                          icon={faArrowRight}
+                          beat
+                          style={{
+                            color: "white",
+                            fontSize: "clamp(12px, 2vw, 16px)",
+                          }}
+                        />
+                      </Button>
+
+
+                      </Col>
+                    </Row>
                   </div>
-                </Col>
-                <Col xs lg="1">
-                  <div className="vl"></div>
-                </Col>
-                <Col className=''>
-                  <h4 style={{ color: '#2a2a28' }}>20% Discount In All Products</h4>
-                  <Button className='btnr rounded-pill' variant='none' style={{ backgroundColor: '#122e3c', width: '100%' }}>
-                    <span style={{ color: 'white' }}>
-                      <span data-attr-span="See the Range">
-                        See the Range
-                      </span>
-                    </span>
-                    <FontAwesomeIcon icon={faArrowRight} beat size='lg' style={{ color: "white", marginLeft: '10px' }} />
-                  </Button>
-
-
-                </Col>
-              </Row>
-            </div>
-          </div>
-        </div>
+                </div>
+              </div>
       </Container>
 
 
 
-      <div className='mb-5'>
-        <Container>
-          <Row className='justify-content-md-center'>
-            <Col xs={12} md={8}>
+      <div className='mb-3 mb-md-5'>
+        <Container >
+          <Row className='justify-content-center g-2 g-sm-3 g-md-4'>
+            <Col xs={12} md={8} className='home-carousel-col'>
               <Carousel data-bs-theme="white">
                 <Carousel.Item>
                   <Image
@@ -196,11 +274,11 @@ function Home() {
                     src={Sonos}
                     alt="First slide"
                     rounded
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: '100%', height: 'auto', maxHeight: '100%', objectFit: 'cover' }}
                   />
                   <Carousel.Caption className="text-caption" style={{ textAlign: 'left', color: 'black' }}>
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h5 style={{ fontSize: 'clamp(11px, 3.5vw, 18px)' }}>First slide label</h5>
+                    <p style={{ fontSize: 'clamp(10px, 2.5vw, 14px)' }}>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -209,38 +287,40 @@ function Home() {
                     src={addbg}
                     alt="Second slide"
                     rounded
-                    style={{ width: '100%', height: 'auto' }}
+                    style={{ width: '100%', height: 'auto', maxHeight: '100%', objectFit: 'cover' }}
                   />
                   <Carousel.Caption className="text-caption">
-                    <div className='font' style={{ textAlign: 'left' }}>
-                      <h2 className='text-white'>The Westmire</h2>
-                      <h2 className='text-white'>
+                    <div className='font' style={{ textAlign: 'left', padding: 'clamp(0.25rem, 2vw, 1.5rem)' }}>
+                      <h2 className='text-white' style={{ fontSize: 'clamp(13px, 4vw, 28px)', marginBottom: '0.2rem' }}>The Westmire</h2>
+                      <h2 className='text-white' style={{ fontSize: 'clamp(11px, 3.5vw, 24px)', marginBottom: '0.2rem' }}>
                         <span><b>A56 Headset</b></span>
                       </h2>
-                      <h5 className='text-white'>Today: <b style={{ color: '#FFDE59', fontSize: '40px' }}>29.99$</b></h5>
-                      <Button className='rounded-pill' variant='none' style={{ background: '#122e3c', fontSize: '11px', width: '100px' }}>
-                        <Link to='/checkout' style={{ textDecoration: 'none', color: 'white' }}>
-                          <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px' }}>
-                            <FontAwesomeIcon icon={faArrowRight} />
-                          </i>
-                        </Link>
-                      </Button>
-                      <Button className='rounded-pill m-2' variant='none' style={{ color: 'black', background: 'rgba(207, 205, 189, 0.4)', fontSize: '11px', width: '100px' }}>
-                        <b>Shop Now</b>
-                      </Button>
+                      <h5 className='text-white' style={{ fontSize: 'clamp(10px, 2.5vw, 16px)', marginBottom: 'clamp(0.3rem, 1vw, 0.5rem)' }}>Today: <b style={{ color: '#FFDE59', fontSize: 'clamp(13px, 4vw, 40px)' }}>29.99$</b></h5>
+                      <div className='d-flex flex-wrap gap-1 gap-sm-2'>
+                        <Button className='rounded-pill' variant='none' style={{ background: '#122e3c', fontSize: 'clamp(9px, 2vw, 11px)', padding: 'clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 2vw, 1rem)' }}>
+                          <Link to='/checkout' style={{ textDecoration: 'none', color: 'white' }}>
+                            <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px' }}>
+                              <FontAwesomeIcon icon={faArrowRight} />
+                            </i>
+                          </Link>
+                        </Button>
+                        <Button className='rounded-pill' variant='none' style={{ color: 'black', background: 'rgba(207, 205, 189, 0.4)', fontSize: 'clamp(9px, 2vw, 11px)', padding: 'clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 2vw, 1rem)' }}>
+                          <b>Shop Now</b>
+                        </Button>
+                      </div>
                     </div>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>
             </Col>
-            <Col xs={12} md={4}>
-              <Row className='mb-2'>
+            <Col xs={12} md={4} className='home-side-col'>
+              <Row className='g-2 g-sm-3'>
                 <Col xs={12}>
                   <div style={{ position: 'relative' }}>
-                    <Image src={phone} rounded style={{ width: '100%', height: 'auto', maxHeight: '200px' }} />
-                    <Button className='rounded-pill buy-now-button' variant='none' style={{ position: 'absolute', bottom: '15px', left: '18px', background: '#122e3c', fontSize: '9px', width: '100px' }}>
+                    <Image src={phone} rounded style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                    <Button className='rounded-pill buy-now-button' variant='none' style={{ position: 'absolute', bottom: 'clamp(8px, 2vw, 15px)', left: 'clamp(10px, 3vw, 18px)', background: '#122e3c', fontSize: 'clamp(8px, 2vw, 9px)', padding: 'clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 0.75rem)' }}>
                       <Link to='/checkout' style={{ textDecoration: 'none', color: 'white' }}>
-                        <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px', color: 'white' }}>
+                        <b>Buy Now</b><i className="fas" style={{ marginLeft: '3px', color: 'white' }}>
                           <FontAwesomeIcon icon={faArrowRight} />
                         </i>
                       </Link>
@@ -248,13 +328,18 @@ function Home() {
                   </div>
                 </Col>
               </Row>
-              <Row>
+              <Row className='g-2 g-sm-3 mt-1 mt-sm-2'>
                 <Col xs={12}>
                   <div style={{ position: 'relative' }}>
-                    <Image src={phone2} rounded style={{ width: '100%', height: 'auto', maxHeight: '200px' }} />
-                    <Button className='rounded-pill buy-now-button' variant='none' style={{ position: 'absolute', bottom: '8px', left: '190px', background: '#ffffff', fontSize: '9px', width: '80px' }}>
+                    <Image src={phone2} rounded style={{ width: '100%', height: 'auto', maxHeight: '100%', objectFit: 'cover' }} />
+                    {/* Original hardcoded this at left:190px, which only
+                        lined up on one exact desktop width and pushed the
+                        button off-screen on any narrower device. Anchored
+                        to the right edge instead - same visual spot on
+                        desktop, stays inside the image on phones. */}
+                    <Button className='rounded-pill buy-now-button buy-now-button-2' variant='none' style={{ position: 'absolute', bottom: 'clamp(8px, 2vw, 8px)', right: 'clamp(10px, 3vw, 15px)', background: '#ffffff', fontSize: 'clamp(8px, 2vw, 9px)', padding: 'clamp(0.3rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 0.75rem)' }}>
                       <Link to='/checkout' style={{ textDecoration: 'none', color: 'black' }}>
-                        <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px' }}>
+                        <b>Buy Now</b><i className="fas" style={{ marginLeft: '3px' }}>
                           <FontAwesomeIcon icon={faArrowRight} />
                         </i>
                       </Link>
@@ -266,6 +351,7 @@ function Home() {
           </Row>
         </Container>
       </div>
+
       <div className='cont'>
         <video autoPlay muted loop>
           <source
@@ -278,8 +364,6 @@ function Home() {
         </h2>
 
       </div>
-
-
     </main >
   )
 };

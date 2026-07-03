@@ -114,7 +114,22 @@
   justify-content: center;
   min-height: 100vh;
 }
+/* Tablet */
+@media (max-width: 768px) {
+  .cont {
+    min-height: 70vh;
+  }
 
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .cont {
+    min-height: 40vh;
+  }
+
+
+}
 video {
   position: absolute;
   top: 0;
@@ -203,14 +218,13 @@ video {
 .bg-con {
   /* Remove height: '150px' from inline style */
   display: flex;
-  position: absolute;
-  margin-top: 25px;
+  /* position: absolute; */
+  /* margin-top: 25px; */
   background-color: #e7e7e7;
   justify-content: center;
-  height: auto; /* Allow height to adjust based on content */
-  margin-left: 18px;
-  max-width: 1080px;
-  width: 100%;
+  /* margin-left: 18px; */
+  /* max-width: 1080px; */
+  width: 1300px;
 }
 .btnr {
   position: relative;
@@ -220,6 +234,7 @@ video {
   text-decoration: none;
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
+  width: 100%; /* Make the button take full width */
 }
 
 .btnr:hover {
@@ -249,12 +264,22 @@ video {
   .embed-responsive-16by9 {
     height: 50vh; /* Adjust the height as needed for small screens */
   }
+  .btnr {
+    display: flex; /* Ensure the button is a flex container */
+    width: auto; /* Make the button take full width on small screens */
+  margin: 0 auto;
+  justify-content: center;
+
+  }
+  .discount{
+    text-align: center;
+  }
 }
 
 
 @media (max-width: 767px) {
   .mobile-display {
-   margin-top: -457px;
+   margin-top: 30px;
   }
 }
 

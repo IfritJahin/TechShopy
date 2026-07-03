@@ -392,23 +392,3 @@ p {
   }
 
 
-
-  <Offcanvas Show={isVisible} onHide={handleHide} placement={placement}>
-  <Offcanvas.Header closeButton>
-      <Offcanvas.Title>YOUR ORDER</Offcanvas.Title>
-  </Offcanvas.Header>
-  <Offcanvas.Body >
-      <div className="d-grid gap-2">
-          <Button size='lg' variant='none' className="custom-button">
-              VIEW CART
-          </Button>
-
-          <Button size='lg' variant='none' className='custom-button'>
-              CONTINUE SHOPPING
-          </Button>
-          <Button size='lg' variant='none' style={{ background: '#FFDE59', color: 'white', borderRadius: 0 }}>
-              PROCEED TO CHECKOUT
-          </Button>
-      </div>
-  </Offcanvas.Body>
-</Offcanvas>
