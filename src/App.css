@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500&display=swap');
+
+
+
+.gradient-navbar {
+    background: rgba(10,27,52,1);
+    
+}
+
+.gradient-navbar .nav-link {
+    color: white; /* Set text color to white */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+.gradient-navbar .nav-link:hover {
+    color: lightgray; /* Change color on hover */
+}
+.gradient-navbar .select {
+    background-color: transparent;
+    color: white;
+    border: none;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.gradient-navbar .select:hover,
+.gradient-navbar .select:focus {
+    color: lightgray;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    
+}
+/* styles.css or your corresponding stylesheet */
+.content-below-header {
+    padding-top: 160px;
+    padding-left: 0;
+    padding-right: 0;  
+  }
+.card-below-header{
+    padding-top: 200px;
+    padding-left: 0;
+    padding-right: 0; 
+}
