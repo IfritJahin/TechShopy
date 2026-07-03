@@ -19,12 +19,12 @@ function App() {
         <div style={{ minHeight: height, overflowX: 'hidden' }}>
           <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/myaccount' element={<Reg />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/help' element={<Help />}></Route>
-            <Route path='/checkout' element={<Checkout />}></Route>
-            <Route path='/products' element={<Product />}></Route>
+            <Route path='/TechShopy/' element={<Home />} />
+            <Route path='/TechShopy/myaccount' element={<Reg />} />
+            <Route path='/TechShopy/contact' element={<Contact />} />
+            <Route path='/TechShopy/help' element={<Help />}></Route>
+            <Route path='/TechShopy/checkout' element={<Checkout />}></Route>
+            <Route path='/TechShopy/products' element={<Product />}></Route>
           </Routes>
         </div>
         <Footer />

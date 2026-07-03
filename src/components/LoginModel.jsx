@@ -57,7 +57,7 @@ function LoginModel(props) {
                     </div>
                     <div className='d-flex justify-content-center'>
                         <Button type="button" variant="none" className='d-flex justify-content-center  mt-3 mb-3 rounded-pill' size="lg" style={{ color: 'white', background: '#122e3c' }}>
-                            <Link to='/myaccount' style={{ textDecoration: 'none', color: 'white' }} onClick={props.onHide}>Create Account</Link>
+                            <Link to='/TechShopy/myaccount' style={{ textDecoration: 'none', color: 'white' }} onClick={props.onHide}>Create Account</Link>
                         </Button>
                     </div>
                 </Card.Body>
