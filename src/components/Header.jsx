@@ -61,25 +61,25 @@ function Header({ onSearch }) {
                     </Navbar.Toggle>
 
                     <Navbar.Collapse id="navbarScroll">
-                        <Link to='/'>
+                        <Link to='/TechShopy/'>
                             <Navbar.Brand>
                                 <img className="mr-3" style={{ width: '80px', marginLeft: '40px' }} src={BL} alt="Logo" />
                             </Navbar.Brand>
                         </Link>
                         <Nav className="d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1" >
-                            <Link to='/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
-                            <Link to='/products' className='nav-link text-white text-decoration-none m-3'>Products</Link>
-                            <Link to='/contact' className='nav-link text-white  text-decoration-none m-3'>Contact</Link>
-                            <Link to='/help' className='nav-link text-white text-decoration-none m-3'>Help & Support</Link>
+                            <Link to='/TechShopy/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
+                            <Link to='/TechShopy/products' className='nav-link text-white text-decoration-none m-3'>Products</Link>
+                            <Link to='/TechShopy/contact' className='nav-link text-white  text-decoration-none m-3'>Contact</Link>
+                            <Link to='/TechShopy/help' className='nav-link text-white text-decoration-none m-3'>Help & Support</Link>
 
                             <div className="dropdown">
                                 <button className="btn text-white text-decoration-none border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     All Categories
                                 </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <Link to='./products' className="dropdown-item" href="">All Categories</Link>
-                                    <Link to='./products' className="dropdown-item" href="#">Laptops</Link>
-                                    <Link to='./products' className="dropdown-item" href="#">Phones</Link>
+                                    <Link to='/TechShopy/products' className="dropdown-item" href="">All Categories</Link>
+                                    <Link to='/TechShopy/products' className="dropdown-item" href="#">Laptops</Link>
+                                    <Link to='/TechShopy/products' className="dropdown-item" href="#">Phones</Link>
                                     {/* ... other items ... */}
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ function Header({ onSearch }) {
                                                                 CONTINUE SHOPPING
                                                             </Button>
                                                         </Link>
-                                                        <Link to='/checkout' style={{ width: '100%', display: 'block' }} >
+                                                        <Link to='/TechShopy/checkout' style={{ width: '100%', display: 'block' }} >
                                                             <Button size='lg' variant='none' style={{ width: '100%', background: '#FFDE59', color: 'white', borderRadius: 0 }}>
                                                                 PROCEED TO CHECKOUT
                                                             </Button>
