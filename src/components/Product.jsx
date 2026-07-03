@@ -1,10 +1,10 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import product from '../img/pproduct.mp4'
-import { Button, Container, Card, Col, Form, Row, Modal, InputGroup, Image, CardBody, ListGroup } from 'react-bootstrap';
+import { Button, Container, Card, Col, Form, Row, ListGroup } from 'react-bootstrap';
 import '../assets/product.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faBars as faBars, faCartShopping, faStar, faArrowRight, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faCartShopping, faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Rating from 'react-rating';
 import Home_p from './Home_p';
 import { Link } from 'react-router-dom'
@@ -41,17 +41,23 @@ function Product() {
     }
     return (
         <div className=''>
-            <div className='product-container'>
-                <div className="video-wrapper embed-responsive embed-responsive-16by9">
-                    <video className="video-item embed-responsive-item" autoPlay loop muted>
-                        <source src={product} type="video/mp4" />
-                    </video>
-                </div>
+            <div className="product-container">
+            <div className="video-wrapper">
+                <video
+                className="video-item"
+                autoPlay
+                loop
+                muted
+                playsInline
+                >
+                <source src={product} type="video/mp4" />
+                </video>
+            </div>
             </div>
             <Container >
                 <Row >
-                    <Col sm={4} className="pr-md-2">
-                        <Card className='mt-4 mb-3' style={{ width: '18rem' }}>
+                    <Col xs={12} md={4} lg={3} className="mb-4">
+                        <Card className="mt-4 mb-3 sidebar-card">
                             <Card.Body>
                                 <b>Product Catagories</b>
                                 <ListGroup.Item>
@@ -82,19 +88,6 @@ function Product() {
 
                             </Card.Body>
                             <ListGroup className="list-group-flush">
-                                <ListGroup.Item>Price
-                                    <Form  >
-                                        {['Accessories', 'Laptop & Ipad', 'TV & Audios', 'SmartPhone & Tabltes'].map((type) => (
-                                            <div key={type} className="mb-3 mt-3" >
-                                                <Form.Check className="custom-checkbox" style={{ color: '#122e3c' }} type={type} id={`${type}`} variant='none' >
-                                                    <Form.Check.Input style={{ color: '#122e3c' }} type='checkbox' isValid />
-                                                    <Form.Check.Label style={{ color: '#122e3c' }}>{`${type}`}</Form.Check.Label>
-
-                                                </Form.Check>
-                                            </div>
-                                        ))}
-                                    </Form>
-                                </ListGroup.Item>
                                 <ListGroup.Item>
                                     <b>Colors</b>
 
@@ -123,21 +116,30 @@ function Product() {
                                 </ListGroup.Item>
                                 <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
                             </ListGroup>
-                            <Card.Body>
-                                <Card.Link href="#">Card Link</Card.Link>
-                                <Card.Link href="#">Another Link</Card.Link>
-                            </Card.Body>
+
                         </Card>
                     </Col>
-                    <Col xs={12} sm={8} className='mt-4 mb-3 pl-md-2'>
+                    <Col xs={12} md={8} lg={9} className="mt-4 mb-3">
                         <Row ><Col sm={12} className='pl-md-2 w-100'><Card><Card.Header> {selectedCategories.length > 0 ? `${selectedCategories.join(', ')}` : 'All'}</Card.Header></Card></Col></Row>
                         <Row>
                             <Col sm={12} className='mt-4 mb-3 pl-md-2'>
                                 <Row>
                                     {filterProductsByCategory().map((curElement) => (
-                                        <Col key={curElement.id} xs={10} md={8} lg={6} xl={4} className="mb-4">
-                                            <Card className='box mb-4' style={{ width: '15rem', maxHeight: '100%' }}>
-                                                <Card.Img variant="top" className='img' style={{ maxHeight: '288px' }} src={curElement.img} alt='' />
+                                        <Col
+                                                key={curElement.id}
+                                                xs={12}
+                                                sm={6}
+                                                md={6}
+                                                lg={4}
+                                                xl={4}
+                                                className="mb-4 d-flex justify-content-center"
+                                            >
+                                            <Card className="box mb-4 h-100">
+                                                <Card.Img
+                                                    variant="top"
+                                                    className="product-img"
+                                                    src={curElement.img}
+                                                />
                                                 <Card.Body className='card_body'>
                                                     <Card.Title className="box-title" ><h6>{curElement.Name || 'Product Name'}</h6></Card.Title>
                                                     <Card.Text className="box-description " style={{ maxHeight: '48px' }}><h7>{curElement.type || 'Product Description'}</h7></Card.Text>
@@ -150,7 +152,10 @@ function Product() {
                                                     <div className="hover-icons">
                                                         <div className='d-flex justify-content-center'>
                                                             <Link to='/checkout'>
-                                                                <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: '#122e3c', height: '3rem', width: '3em', }}>
+                                                                <Button
+                                                                    className="action-btn rounded-circle"
+                                                                    variant="none"
+                                                                    >
                                                                     <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '15px' }} />
                                                                 </Button>
                                                             </Link>
@@ -158,7 +163,10 @@ function Product() {
                                                                 <FontAwesomeIcon icon={faHeart} style={{ color: "white", fontSize: '15px' }} />
                                                             </Button>
                                                         </div>
-                                                        <Button variant="none" className='rounded-pill mt-3' style={{ color: 'white', background: '#122e3c' }}>Select Options</Button>
+                                                        <Button
+                                                        variant="none"
+                                                        className="select-btn rounded-pill mt-3"
+                                                        >Select Options</Button>
                                                     </div>
                                                 </Card.Body>
                                             </Card>
