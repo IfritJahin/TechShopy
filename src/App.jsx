@@ -16,10 +16,10 @@ function App() {
     <Router>
       <div>
 
-        <div style={{ minHeight: height }}>
+        <div style={{ minHeight: height, overflowX: 'hidden' }}>
           <Header />
           <Routes>
-            <Route path='/TechShopy/' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/myaccount' element={<Reg />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/help' element={<Help />}></Route>

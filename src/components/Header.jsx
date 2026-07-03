@@ -61,13 +61,13 @@ function Header({ onSearch }) {
                     </Navbar.Toggle>
 
                     <Navbar.Collapse id="navbarScroll">
-                        <Link to='/TechShopy/'>
+                        <Link to='/'>
                             <Navbar.Brand>
                                 <img className="mr-3" style={{ width: '80px', marginLeft: '40px' }} src={BL} alt="Logo" />
                             </Navbar.Brand>
                         </Link>
                         <Nav className="d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1" >
-                            <Link to='/TechShopy/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
+                            <Link to='/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
                             <Link to='/products' className='nav-link text-white text-decoration-none m-3'>Products</Link>
                             <Link to='/contact' className='nav-link text-white  text-decoration-none m-3'>Contact</Link>
                             <Link to='/help' className='nav-link text-white text-decoration-none m-3'>Help & Support</Link>
@@ -91,27 +91,33 @@ function Header({ onSearch }) {
                                         <Button variant="none" className='text-decoration-none text-dark' onClick={handleShow} >
                                             <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "white", fontSize: '25px', verticalAlign: 'middle' }} />
                                         </Button>
-                                        <Modal className='rounded-pill' show={show} onHide={handleClose}>
-                                            <Modal.Body style={{}} >
+                                        <Modal
+                                        centered
+                                        show={show}
+                                        onHide={handleClose}
+                                        dialogClassName="search-modal"
+                                        >
+                                        <Modal.Body>
+                                            <Form className="d-flex align-items-center gap-2">
+                                            <FormControl
+                                                className="rounded-pill search-input"
+                                                type="text"
+                                                placeholder="Search"
+                                                value={searchTerm}
+                                                onChange={handleChange}
+                                                onKeyDown={handleKeyPress}
+                                            />
 
-                                                <Form className='d-flex'>
-                                                    <FormControl
-                                                        className='rounded-pill'
-                                                        type="text"
-                                                        placeholder="Search"
-                                                        value={searchTerm}
-                                                        style={{ width: '500px' }}
-                                                        onChange={handleChange}
-                                                        onKeyPress={handleKeyPress}
-
-
-                                                    />
-                                                    <Button variant="none" onClick={handleSearch}>
-                                                        <FontAwesomeIcon icon={faMagnifyingGlass} size='lg' fade style={{ color: "#122e3c", }} />
-                                                    </Button>
-
-                                                </Form>
-                                            </Modal.Body>
+                                            <Button variant="none" onClick={handleSearch}>
+                                                <FontAwesomeIcon
+                                                icon={faMagnifyingGlass}
+                                                size="lg"
+                                                fade
+                                                style={{ color: "#122e3c" }}
+                                                />
+                                            </Button>
+                                            </Form>
+                                        </Modal.Body>
                                         </Modal>
                                         <div className="d-flex align-items-center ">
                                             <Button variant='none' className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>

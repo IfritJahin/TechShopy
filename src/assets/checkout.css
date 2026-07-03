@@ -1,0 +1,55 @@
+/* ===== Small screen responsive overrides ONLY ===== */
+/* Everything above stays untouched for desktop/tablet */
+
+@media (max-width: 576px) {
+  .checkout-card {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    height: auto !important;
+    padding-bottom: 20px;
+  }
+
+  .checkout-title,
+  .checkout-field,
+  .checkout-cod-text {
+    width: 100% !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .checkout-half-field {
+    width: 100% !important;
+  }
+
+  .checkout-options-row {
+    flex-wrap: wrap;
+  }
+
+  .checkout-option-card {
+    width: 47% !important;
+    margin-left: 0 !important;
+  }
+
+  .checkout-options-row .checkout-option-card:first-child {
+    margin-right: 6% !important;
+  }
+}
+.form-check{
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 0px;
+}
+.form-check-label {
+  margin-left: 8px;
+}
+.checkout-option-card {
+  margin-right: 16px;
+}
+
+.checkout-option-card:last-child {
+  margin-right: 0;
+}
+.checkout-bg {
+    min-height: 100dvh;
+    background: url("../img/pbg.jpg") center center / cover no-repeat fixed;
+}

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import paycard from '../img/paycard.png'
-import BgImage from '../img/pbg.jpg'
 import { Button, Container, Card, Col, Form, Row, Modal, InputGroup, Image, CardBody } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard, faMoneyBillTransfer, faTruck } from '@fortawesome/free-solid-svg-icons'
+import '../assets/checkout.css'
+import BgImage from '../img/pbg.jpg'
 function Checkout() {
     const [selectedCategory, setSelectedCategory] = useState('Select-City');
 
@@ -16,10 +16,26 @@ function Checkout() {
     const handleOptionSelect = (event) => {
         setSelectedOption(event.target.value);
     };
-
+const PAYMENT_METHODS = [
+  {
+    id: "Option1",
+    label: "Card Payment",
+    icon: faCreditCard,
+  },
+  {
+    id: "Option2",
+    label: "Online Payment",
+    icon: faMoneyBillTransfer,
+  },
+  {
+    id: "Option3",
+    label: "Cash On Delivery",
+    icon: faTruck,
+  },
+];
     const renderAdditionalContent = () => {
         if (selectedOption === 'Option1') {
-            return <Card className="mt-3" style={{ width: '400px', marginLeft: '10px' }}>
+            return <Card className="checkout-input">
                 <Card.Body>
                     <Card.Title style={{ color: 'rgba(10,27,52,1)' }}>Card Payment                                 <FontAwesomeIcon
                         icon={faCreditCard}
@@ -32,7 +48,7 @@ function Checkout() {
 
                                 <Form.Control
                                     placeholder="Enter your card number"
-                                    className="rounded-pill"
+                                    className="rounded-pill checkout-field"
                                     type="password"
                                     style={{ width: '300px', paddingRight: '40px' }}
                                     autoFocus
@@ -43,7 +59,7 @@ function Checkout() {
                                     <Form.Control
                                         required
                                         type="date"
-                                        className="rounded-pill"
+                                        className="rounded-pill checkout-half-field"
                                         placeholder="First name"
                                         defaultValue="Mark"
                                     />
@@ -53,7 +69,7 @@ function Checkout() {
                                     <Form.Control
                                         required
                                         type="text"
-                                        className="rounded-pill"
+                                        className="rounded-pill checkout-half-field"
                                         placeholder="Last name"
                                         defaultValue="Otto"
                                     />
@@ -66,7 +82,7 @@ function Checkout() {
                 </Card.Body>
             </Card>;
         } else if (selectedOption === 'Option2') {
-            return <Card className="mt-3" style={{ width: '400px', marginLeft: '10px' }}>
+            return <Card className="checkout-input">
                 <Card.Body>
                     <Card.Title style={{ color: 'rgba(10,27,52,1)' }}>Online Payment <FontAwesomeIcon icon={faMoneyBillTransfer} style={{ position: 'absolute', right: '12px', color: '#777' }} /></Card.Title>
                     <Card.Text>
@@ -76,7 +92,7 @@ function Checkout() {
 
                                 <Form.Control
                                     placeholder="Enter your phone number"
-                                    className="rounded-pill"
+                                    className="rounded-pill checkout-field"
                                     type="number"
                                     style={{ width: '300px', paddingRight: '40px' }}
                                     autoFocus
@@ -87,7 +103,7 @@ function Checkout() {
                                     <Form.Control
                                         required
                                         type="Password"
-                                        className="rounded-pill"
+                                        className="rounded-pill checkout-half-field"
                                         placeholder="Enter your pin"
                                     />
                                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -96,7 +112,7 @@ function Checkout() {
                                     <Form.Control
                                         required
                                         type="Number"
-                                        className="rounded-pill"
+                                        className="rounded-pill checkout-half-field"
                                         placeholder="BDT"
                                         defaultValue="0"
                                     />
@@ -110,7 +126,7 @@ function Checkout() {
             </Card>;
         }
         else if (selectedOption === 'Option3') {
-            return <p style={{ width: '400px', marginLeft: '10px', textAlign: 'center' }}>Cash On delivery</p>;
+            return <p className="checkout-cod-text" style={{ width: '400px', textAlign: 'center' }}>Cash On delivery</p>;
         } else {
             return null;
         }
@@ -119,44 +135,41 @@ function Checkout() {
         setSelectedOption('Option1');
     }, []);
     return (
-        <div className='card-below-header d-flex justify-content-center '>
-            <img
+        <div className='card-below-header d-flex justify-content-center checkout-bg' style={{ overflowX: 'hidden', width: '100%' }}>
+            {/* <img
                 src={BgImage}
                 alt="Background Image"
                 className="w-100 vh-100 position-fixed top-0 left-0"
                 style={{ objectFit: 'cover' }}
-            />
+            /> */}
             <Card
-                className={`d-flex justify-content-center align-items-${selectedOption === 'Option3' ? 'start' : 'left'}`}
-                style={{ backgroundImage: `url(${paycard})`, border: 0, width: '770px', marginBottom: '20px', height: selectedOption === 'Option3' ? '660px' : '800px' }}
+                className={`checkout-card d-flex justify-content-center align-items-${selectedOption === 'Option3' ? 'start' : 'left'}`}
+                style={{ border: 0, marginBottom: '20px', height: selectedOption === 'Option3' ? '660px' : '800px' }}
             >
-                <Card.Title ><h2 style={{ width: '400px', marginLeft: '10px', textAlign: 'center' }}>Checkout</h2></Card.Title>
-                <Form >
-                    <Form.Group className="mb-3 " controlId="exampleForm.ControlInput1">
+                <Card.Title ><h2 className="checkout-title" style={{ textAlign: 'center' }}>Checkout</h2></Card.Title>
+                <Form className='' >
+                    <Form.Group className="mb-3 form-check" controlId="exampleForm.ControlInput1">
                         <Form.Control
                             type="email"
                             placeholder="Enter your name"
-                            className='rounded-pill'
-                            style={{ width: '400px', marginLeft: '10px' }}
+                            className='rounded-pill checkout-field'
                             autoFocus
                         />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3 form-check" controlId="exampleForm.ControlInput1">
                         <Form.Control
                             type="email"
                             placeholder="Enter Your Mail"
-                            className='rounded-pill'
-                            style={{ width: '400px', marginLeft: '10px' }}
+                            className='rounded-pill checkout-field'
                             autoFocus
                         />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlSelect1">
+                    <Form.Group className="mb-3 form-check" controlId="exampleForm.ControlSelect1">
                         <Form.Control
                             as="select"
-                            className="rounded-pill"
+                            className="rounded-pill checkout-field"
                             value={selectedCategory}
                             onChange={handleCategorySelect}
-                            style={{ width: '400px', marginLeft: '10px' }}
                         >
                             <option value="Select-City">Select-City</option>
                             <option value="Dhaka">Dhaka</option>
@@ -168,20 +181,18 @@ function Checkout() {
                             {/* ... other items ... */}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3 form-check" controlId="exampleForm.ControlInput1">
                         <Form.Control
                             type="password"
                             placeholder="Current Adddress"
-                            className='rounded-pill'
-                            style={{ width: '400px', marginLeft: '10px' }}
+                            className='rounded-pill checkout-field'
                             autoFocus
                         />
                     </Form.Group>
-                    <Form.Group controlId="" className="d-flex ">
+                    <Form.Group controlId="" className="form-check checkout-options-row">
                         <Card
-                            className={`rounded-pill option-card ${selectedOption === 'Option1' ? 'selected' : ''} mb-3`}
+                            className={`rounded-pill option-card ${selectedOption === 'Option1' ? 'selected' : ''} mb-3 checkout-option-card`}
                             onClick={() => handleOptionSelect({ target: { value: 'Option1' } })}
-                            style={{ width: '200px', marginLeft: '10px' }}
                         >
                             <Card.Body>
                                 <Form.Check
@@ -196,9 +207,8 @@ function Checkout() {
                         </Card>
 
                         <Card
-                            className={`rounded-pill option-card ${selectedOption === 'Option2' ? 'selected' : ''} mb-3`}
+                            className={`rounded-pill option-card ${selectedOption === 'Option2' ? 'selected' : ''} mb-3 checkout-option-card`}
                             onClick={() => handleOptionSelect({ target: { value: 'Option2' } })}
-                            style={{ width: '200px', marginLeft: '10px' }}
                         >
                             <Card.Body>
                                 <Form.Check
@@ -213,9 +223,9 @@ function Checkout() {
 
 
                     </Form.Group>
-                    <Form.Group className="rounded-pill mb-4" >
-                        <Card className={`rounded-pill option-card ${selectedOption === 'Option3' ? 'selected' : ''} mb-3`}
-                            onClick={() => handleOptionSelect({ target: { value: 'Option3' } })} style={{ width: '400px', marginLeft: '10px' }}>
+                    <Form.Group className=" form-check rounded-pill mb-4" >
+                        <Card className={`rounded-pill option-card ${selectedOption === 'Option3' ? 'selected' : ''} mb-3 checkout-field`}
+                            onClick={() => handleOptionSelect({ target: { value: 'Option3' } })} >
                             <Row>
                                 <Col sm={6}>
                                     <Form.Check
@@ -225,7 +235,7 @@ function Checkout() {
                                         value="Option3"
                                         checked={selectedOption === 'Option3'}
                                         onChange={handleOptionSelect}
-                                        style={{ width: '400px', marginLeft: '10px' }}
+                                        style={{ width: '400px' }}
                                     />
 
                                 </Col>
@@ -241,21 +251,19 @@ function Checkout() {
                     {renderAdditionalContent()}
 
 
-                    <Form.Group className="mb-4">
+                    <Form.Group className="mb-4 mt-3" >
                         <Row>
                             <Col>
                                 <Form.Check
-                                    type="checkbox"
-                                    label="I accept terms & conditions"
-                                    id="rememberMeCheckbox"
-                                    style={{ width: '400px', marginLeft: '10px' }}
+                                type="checkbox"
+                                id="rememberMeCheckbox"
+                                label={<span className="ms-2">I accept terms & conditions</span>}
                                 />
                             </Col>
-
                         </Row>
                     </Form.Group>
-                    <div className="d-grid gap-2 ">
-                        <Button type="submit" variant="none" className='rounded-pill' size="lg" style={{ color: 'white', background: 'rgba(10,27,52,1)', width: '400px', marginLeft: '10px' }}>Place Order</Button>
+                    <div className="d-flex justify-content-center">
+                        <Button type="submit" variant="none" className='rounded-pill checkout-field' size="lg" style={{ color: 'white', background: 'rgba(10,27,52,1)', width: '400px' }}>Place Order</Button>
                     </div>
 
                 </Form>

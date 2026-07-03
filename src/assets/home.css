@@ -330,3 +330,50 @@ video {
     height: 350px;
   }
 }
+/* Modal width */
+.search-modal .modal-dialog {
+  max-width: 650px;
+  width: 90%;
+}
+
+/* Search input */
+.search-input {
+  width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .search-modal .modal-dialog {
+    max-width: 95%;
+    margin: 1rem auto;
+  }
+
+  .search-input {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .search-modal .modal-dialog {
+    max-width: 95%;
+  }
+
+  .search-modal .modal-body {
+    padding: 1rem;
+  }
+
+  .search-input {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .search-modal form {
+    gap: 8px;
+  }
+
+  .search-modal button {
+    padding: 6px 10px;
+  }
+}
